@@ -5,6 +5,7 @@ public abstract class Skladiste {
 
     private String path;
     //String name je ime foldera
+    //vrv nam ne treba klasa fajl
 
     public Skladiste(){
 
