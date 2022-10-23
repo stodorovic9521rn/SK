@@ -22,6 +22,14 @@ public abstract class Skladiste {
 
     abstract void rename(String itemPath, String newName);
 
+    abstract void sort(String path, String sortBy, boolean opadajuce);
+
+    abstract void filter(String path);
+
+    abstract boolean dirContainsFile(String dirPath, ArrayList<String> fileName);
+
+    abstract String whereIsFile(String fileName);
+
     abstract ArrayList<Fajl> getAllFiles(String path);
 
     abstract ArrayList<Fajl> getAllFilesNotSoDeep(String path);
@@ -32,16 +40,6 @@ public abstract class Skladiste {
 
     abstract ArrayList<Fajl> getAllFilesSubstring(String path, String substr);
 
-    abstract boolean dirContainsFile(String dirPath, ArrayList<String> fileName);
-
-    abstract String whereIsFile(String fileName);
-
-    abstract void sort(String path, String sortBy, boolean opadajuce);
-
     abstract ArrayList<Fajl> getModified(String dirPath, Date from, Date to);
-
-    abstract void filter(String path);
-
-
 
 }
