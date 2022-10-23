@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/GoogleDriveImplementation/GoogleDriveImplementation.iml" filepath="$PROJECT_DIR$/GoogleDriveImplementation/GoogleDriveImplementation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LocalStorageImplementation/LocalStorageImplementation.iml" filepath="$PROJECT_DIR$/LocalStorageImplementation/LocalStorageImplementation.iml" />
       <module fileurl="file://$PROJECT_DIR$/SK.iml" filepath="$PROJECT_DIR$/SK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Specification/Specification.iml" filepath="$PROJECT_DIR$/Specification/Specification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Test/Test.iml" filepath="$PROJECT_DIR$/Test/Test.iml" />
     </modules>
   </component>
 </project>
