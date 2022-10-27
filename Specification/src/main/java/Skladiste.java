@@ -62,16 +62,39 @@ public abstract class Skladiste {
      */
     abstract String whereIsFile(String fileName);
 
+    /*
+    * Vraca sve fajlove u zadatom direktorijumu (vraća se naziv i metapodaci).
+     */
     abstract ArrayList<Fajl> getAllFiles(String path);
 
+    /*
+    * Vraca sve fajlove iz svih direktorijuma u nekom direktorijumu.
+     */
     abstract ArrayList<Fajl> getAllFilesNotSoDeep(String path);
 
+    /*
+    * Vraca sve fajlove u zadatom direktorijumu i svim poddirektorijumima.
+     */
     abstract ArrayList<Fajl> getAllFilesDeep(String path);
 
+    /*
+    * Vraca fajlove sa određenom ekstenzijom.
+     */
     abstract ArrayList<Fajl> getAllFilesWithExt(String ext, String path);
 
+    /*
+    * Vraca fajlove koji u svom imenu sadrže, počinju,
+    *  ili se završavaju nekim zadatim podstringom.
+     */
     abstract ArrayList<Fajl> getAllFilesSubstring(String path, String substr);
 
+    /*
+    * Vraca fajlove koji su kreirani/modifikovani u nekom periodu, u nekom direktorijumu.
+    *
+    * @param
+    *
+    * @return
+     */
     abstract ArrayList<Fajl> getModified(String dirPath, Date from, Date to);
 
 }
