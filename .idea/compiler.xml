@@ -13,10 +13,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="GoogleDriveImplementation" target="17" />
-      <module name="LocalStorageImplementation" target="17" />
-      <module name="Specification" target="17" />
-      <module name="Test" target="17" />
+      <module name="GoogleDriveImplementation" target="16" />
+      <module name="LocalStorageImplementation" target="16" />
+      <module name="Specification" target="16" />
+      <module name="Test" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
