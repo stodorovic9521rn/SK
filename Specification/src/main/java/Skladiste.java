@@ -147,26 +147,26 @@ public abstract class Skladiste {
     * Vraca sve fajlove u zadatom direktorijumu (vraća se naziv i metapodaci.
     * @param path
      */
-    abstract ArrayList<File> getAllFiles(String path);
+    abstract ArrayList<Fajl> getAllFiles(String path);
 
     /*
     * Vraca sve fajlove iz svih direktorijuma u nekom direktorijumu.
     * @param path
      */
 
-    abstract ArrayList<File> getAllFilesNotSoDeep(String path);
+    abstract ArrayList<Fajl> getAllFilesNotSoDeep(String path);
     /*
     * Vraca sve fajlove u zadatom direktorijumu i svim poddirektorijumima.
     * @param path
      */
-    abstract ArrayList<File> getAllFilesDeep(String path);
+    abstract ArrayList<Fajl> getAllFilesDeep(String path);
 
     /*
     * Vraca fajlove sa određenom ekstenzijom.
     * @param ext
     * @param path putanja do
      */
-    abstract ArrayList<File> getAllFilesWithExt(String ext, String path);
+    abstract ArrayList<Fajl> getAllFilesWithExt(String ext, String path);
 
     /*
     * Vraca fajlove koji u svom imenu sadrže, počinju,
@@ -175,7 +175,7 @@ public abstract class Skladiste {
     * @param substr
     * @return
      */
-    abstract ArrayList<File> getAllFilesSubstring(String path, String substr);
+    abstract ArrayList<Fajl> getAllFilesSubstring(String path, String substr);
 
     /*
     * Vraca fajlove koji su kreirani/modifikovani u nekom periodu, u nekom direktorijumu.
@@ -186,7 +186,7 @@ public abstract class Skladiste {
     *
     * @return
      */
-    abstract ArrayList<File> getModified(String dirPath, Date from, Date to);
+    abstract ArrayList<Fajl> getModified(String dirPath, Date from, Date to);
 
 
     public String getPath() {
