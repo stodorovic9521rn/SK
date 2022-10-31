@@ -12,9 +12,9 @@ import java.util.List;
 public abstract class Skladiste {
 
     private String path;
-    private int maxSizeLimit;
-    private List<String> bannedExtensions;
-    private int fileCountLimit;
+    private final int byteSizeLimit;
+    private final List<String> bannedExtensions;
+    private final int fileCountLimit;
 
 
     //String name je ime foldera
@@ -22,38 +22,16 @@ public abstract class Skladiste {
 
     public Skladiste(String path){
         this.path = path;
-        maxSizeLimit = 127;
+        byteSizeLimit = 256;
         bannedExtensions = new ArrayList<>();
         fileCountLimit = 20;
     }
 
-    public Skladiste(String path, int maxSizeLimit, List<String> bannedExtensions, int fileCountLimit) {
+    public Skladiste(String path, int byteSizeLimit, List<String> bannedExtensions, int fileCountLimit) {
         this.path = path;
-        this.maxSizeLimit = maxSizeLimit;
+        this.byteSizeLimit = byteSizeLimit;
         this.bannedExtensions = bannedExtensions;
         this.fileCountLimit = fileCountLimit;
-    }
-
-
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public int getMaxSizeLimit() {
-        return maxSizeLimit;
-    }
-
-    public List<String> getBannedExtensions() {
-        return bannedExtensions;
-    }
-
-    public int getFileCountLimit() {
-        return fileCountLimit;
     }
 
     public Object getConfiguration(IConfig config){
@@ -67,8 +45,8 @@ public abstract class Skladiste {
                 case FILE_COUNT_LIMIT -> {
                     return json.get("fileCountLimit");
                 }
-                case MAX_SIZE_LIMIT -> {
-                    return json.get("maxSizeLimit");
+                case BYTE_SIZE_LIMIT -> {
+                    return json.get("byteSizeLimit");
                 }
             }
         } catch (Exception e) {
@@ -81,7 +59,7 @@ public abstract class Skladiste {
         try {
             FileWriter fileWriter = new FileWriter("config.json");
             JSONObject json = new JSONObject();
-            json.put("maxSizeLimit", maxSizeLimit);
+            json.put("byteSizeLimit", byteSizeLimit);
             JSONArray jsonArray = new JSONArray();
             jsonArray.addAll(bannedExtensions);
             json.put("bannedExtensions", jsonArray);
@@ -185,22 +163,50 @@ public abstract class Skladiste {
 
     /*
     * Vraca fajlove sa određenom ekstenzijom.
+    * @param ext
+    * @param path putanja do
      */
     abstract ArrayList<File> getAllFilesWithExt(String ext, String path);
 
     /*
     * Vraca fajlove koji u svom imenu sadrže, počinju,
     *  ili se završavaju nekim zadatim podstringom.
+    * @param path
+    * @param substr
+    * @return
      */
     abstract ArrayList<File> getAllFilesSubstring(String path, String substr);
 
     /*
     * Vraca fajlove koji su kreirani/modifikovani u nekom periodu, u nekom direktorijumu.
     *
-    * @param
+    * @param dirPath
+    * @param from
+    * @param to
     *
     * @return
      */
     abstract ArrayList<File> getModified(String dirPath, Date from, Date to);
+
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public int getByteSizeLimit() {
+        return byteSizeLimit;
+    }
+
+    public List<String> getBannedExtensions() {
+        return bannedExtensions;
+    }
+
+    public int getFileCountLimit() {
+        return fileCountLimit;
+    }
 
 }

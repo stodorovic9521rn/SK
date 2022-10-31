@@ -14,7 +14,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="GoogleDriveImplementation" target="16" />
-      <module name="LocalStorageImplementation" target="16" />
+      <module name="LocalStorageImplementation" target="17" />
       <module name="Specification" target="16" />
       <module name="Test" target="16" />
     </bytecodeTargetLevel>
