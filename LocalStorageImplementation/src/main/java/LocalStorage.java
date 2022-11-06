@@ -92,32 +92,32 @@ public class LocalStorage extends Skladiste {
     }
 
     @Override
-    ArrayList<File> getAllFiles(String path) {
+    ArrayList<Fajl> getAllFiles(String path) {
         return null;
     }
 
     @Override
-    ArrayList<File> getAllFilesNotSoDeep(String path) {
+    ArrayList<Fajl> getAllFilesNotSoDeep(String path) {
         return null;
     }
 
     @Override
-    ArrayList<File> getAllFilesDeep(String path) {
+    ArrayList<Fajl> getAllFilesDeep(String path) {
         return null;
     }
 
     @Override
-    ArrayList<File> getAllFilesWithExt(String ext, String path) {
+    ArrayList<Fajl> getAllFilesWithExt(String ext, String path) {
         return null;
     }
 
     @Override
-    ArrayList<File> getAllFilesSubstring(String path, String substr) {
+    ArrayList<Fajl> getAllFilesSubstring(String path, String substr) {
         return null;
     }
 
     @Override
-    ArrayList<File> getModified(String dirPath, Date from, Date to) {
+    ArrayList<Fajl> getModified(String dirPath, Date from, Date to) {
         return null;
     }
 
