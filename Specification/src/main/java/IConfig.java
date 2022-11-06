@@ -1,5 +1,0 @@
-public enum IConfig {
-    BANNED_EXTENSIONS,
-    FILE_COUNT_LIMIT,
-    BYTE_SIZE_LIMIT
-}
