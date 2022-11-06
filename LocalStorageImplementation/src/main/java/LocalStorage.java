@@ -33,7 +33,6 @@ public class LocalStorage extends Skladiste {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -47,17 +46,17 @@ public class LocalStorage extends Skladiste {
     }
 
     @Override
-    void putFiles(String path, String[] names) {
+    void putFiles(String path, ArrayList<String> files) {
 
     }
 
     @Override
-    void deleteFilesDirs(String path, String[] names) {
+    void deleteFilesDirs(ArrayList<String> paths) {
 
     }
 
     @Override
-    void moveFiles(String path1, String path2, String[] names) {
+    void moveFiles(String destinationPath, ArrayList<String> files) {
 
     }
 
@@ -72,17 +71,17 @@ public class LocalStorage extends Skladiste {
     }
 
     @Override
-    void sort(String path, String sortBy, boolean opadajuce) {
+    void sort(String sortBy, boolean opadajuce) {
 
     }
 
     @Override
-    void filter(String path) {
+    void filter(String path, ArrayList<String> parametriZaFilter) {
 
     }
 
     @Override
-    boolean dirContainsFile(String dirPath, ArrayList<String> fileName) {
+    boolean dirContainsFiles(String dirPath, ArrayList<String> files) {
         return false;
     }
 
@@ -107,12 +106,12 @@ public class LocalStorage extends Skladiste {
     }
 
     @Override
-    ArrayList<Fajl> getAllFilesWithExt(String ext, String path) {
+    ArrayList<Fajl> getAllFilesWithExt(String ext) {
         return null;
     }
 
     @Override
-    ArrayList<Fajl> getAllFilesSubstring(String path, String substr) {
+    ArrayList<Fajl> getAllFilesSubstring(String substr) {
         return null;
     }
 

@@ -61,14 +61,14 @@ public abstract class Skladiste {
      * @param path
      * @param names[]
      */
-    abstract void putFiles(String path, String []names);
+    abstract void putFiles(String path, ArrayList<String> files);
 
     /*
      * Brisanje fajlova i direktorijuma iz skladišta.
      * @param path
      * @param names[]
      */
-    abstract void deleteFilesDirs(String path, String []names);
+    abstract void deleteFilesDirs(ArrayList<String> paths);
 
     /*
      * Premeštanje fajlova iz jednog direktorijuma u drugi.
@@ -76,8 +76,7 @@ public abstract class Skladiste {
      * @param path2
      * @param names[]
      */
-    abstract void moveFiles(String path1, String path2, String []names);
-
+    abstract void moveFiles(String destinationPath, ArrayList<String> files);
     /*
      * Preuzimanje fajlova iz skladišta.
      * @param intemPath
@@ -99,13 +98,13 @@ public abstract class Skladiste {
      * @param sortBy
      * @param opadajuce
      */
-    abstract void sort(String path, String sortBy, boolean opadajuce);
+    abstract void sort(String sortBy, boolean opadajuce);
 
     /*
     * Filtriranje podataka koji se prikazuju za fajlove koji su rezultati pretraga.
     * @param path
      */
-    abstract void filter(String path);
+    abstract void filter(String path, ArrayList<String> parametriZaFilter);
 
     /*
     * Vraca da li određeni direktorijum sadrži fajl sa određenim imenom,
@@ -113,7 +112,7 @@ public abstract class Skladiste {
     * @param dirPath
     * @param fileName
      */
-    abstract boolean dirContainsFile(String dirPath, ArrayList<String> fileName);
+    abstract boolean dirContainsFiles(String dirPath, ArrayList<String> files);
 
     /*
     * Vraca u kom folderu se nalazi fajl sa određenim zadatim imenom.
@@ -144,7 +143,7 @@ public abstract class Skladiste {
     * @param ext
     * @param path putanja do
      */
-    abstract ArrayList<Fajl> getAllFilesWithExt(String ext, String path);
+    abstract ArrayList<Fajl> getAllFilesWithExt(String ext);
 
     /*
     * Vraca fajlove koji u svom imenu sadrže, počinju,
@@ -153,7 +152,7 @@ public abstract class Skladiste {
     * @param substr
     * @return
      */
-    abstract ArrayList<Fajl> getAllFilesSubstring(String path, String substr);
+    abstract ArrayList<Fajl> getAllFilesSubstring(String substr);
 
     /*
     * Vraca fajlove koji su kreirani/modifikovani u nekom periodu, u nekom direktorijumu.
