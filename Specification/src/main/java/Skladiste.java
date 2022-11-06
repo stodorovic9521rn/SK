@@ -1,77 +1,56 @@
+package main.java;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public abstract class Skladiste {
 
     private String path;
-    private final int byteSizeLimit;
-    private final List<String> bannedExtensions;
-    private final int fileCountLimit;
-
+    private Config configuration;
 
     //String name je ime foldera
     //vrv nam ne treba klasa fajl
 
-    public Skladiste(String path){
+    public Skladiste(String path, Config configuration){
         this.path = path;
-        byteSizeLimit = 256;
-        bannedExtensions = new ArrayList<>();
-        fileCountLimit = 20;
+        this.configuration = configuration;
+        createConfigFile(getConfiguration());
     }
 
-    public Skladiste(String path, int byteSizeLimit, List<String> bannedExtensions, int fileCountLimit) {
+    public Skladiste(String path, int byteSizeLimit, ArrayList<String> bannedExtensions, int fileCountLimit) {
         this.path = path;
-        this.byteSizeLimit = byteSizeLimit;
-        this.bannedExtensions = bannedExtensions;
-        this.fileCountLimit = fileCountLimit;
+        configuration = new Config(byteSizeLimit, bannedExtensions, fileCountLimit);
+        createConfigFile(getConfiguration());
     }
 
-    public Object getConfiguration(IConfig config){
-        try {
-            JSONParser jsonParser = new JSONParser();
-            JSONObject json = (JSONObject) jsonParser.parse(new FileReader("config.json"));
-            switch (config) {
-                case BANNED_EXTENSIONS -> {
-                    return json.get("bannedExtensions");
-                }
-                case FILE_COUNT_LIMIT -> {
-                    return json.get("fileCountLimit");
-                }
-                case BYTE_SIZE_LIMIT -> {
-                    return json.get("byteSizeLimit");
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+    public Skladiste(String path)
+    {
+        this.path = path;
+        this.configuration = new Config();
+        createConfigFile(getConfiguration());
     }
 
-    public void updateConfiguration(){
-        try {
-            FileWriter fileWriter = new FileWriter("config.json");
-            JSONObject json = new JSONObject();
-            json.put("byteSizeLimit", byteSizeLimit);
-            JSONArray jsonArray = new JSONArray();
-            jsonArray.addAll(bannedExtensions);
-            json.put("bannedExtensions", jsonArray);
-            json.put("fileCountLimit", fileCountLimit);
-            fileWriter.write(json.toString());
-            fileWriter.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    abstract void createConfigFile(Config c);
+    abstract void readConfig();
+
+    public void setConfiguration(Config c)
+    {
+        this.configuration = c;
     }
 
-
+    protected String getConfigJson() {
+        JSONObject json = new JSONObject();
+        json.put("maxSizeLimit", configuration.getByteSize());
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.addAll(configuration.getBannedExtensions());
+        json.put("bannedExtensions", jsonArray);
+        json.put("fileCountLimit", configuration.getMaxFileCount());
+        return json.toString();
+    }
     /*
     * Kreiranje direktorijuma na određenoj putanji u skladištu.
     * @param path
@@ -189,6 +168,7 @@ public abstract class Skladiste {
     abstract ArrayList<Fajl> getModified(String dirPath, Date from, Date to);
 
 
+    abstract void createPath();
     public String getPath() {
         return path;
     }
@@ -196,17 +176,10 @@ public abstract class Skladiste {
     public void setPath(String path) {
         this.path = path;
     }
-
-    public int getByteSizeLimit() {
-        return byteSizeLimit;
+    public Config getConfiguration()
+    {
+        return  configuration;
     }
 
-    public List<String> getBannedExtensions() {
-        return bannedExtensions;
-    }
-
-    public int getFileCountLimit() {
-        return fileCountLimit;
-    }
 
 }
