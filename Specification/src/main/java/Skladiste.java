@@ -1,5 +1,5 @@
-package main.java;
 
+import main.java.Fajl;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
