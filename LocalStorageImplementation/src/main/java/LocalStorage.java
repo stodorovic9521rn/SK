@@ -1,5 +1,4 @@
-
-import main.java.Fajl;
+package main.java;
 
 import java.io.File;
 import java.io.FileWriter;
